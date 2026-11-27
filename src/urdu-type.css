@@ -1,0 +1,57 @@
+/* --- Urdu typography -------------------------------------------------------
+   Every piece of Urdu in the app — the school's name on a letterhead, a parent's
+   name on an admission form, a note on a staff profile — is set in the same
+   Nastaliq face so printed documents look like they came from one press.
+
+   Jameel Noori Nastaleeq is the face the school asked for. It is a large,
+   locally-installed font, not one we can fetch: the web copy weighs about ten
+   megabytes, which would stall the first paint of every page. Declaring it with
+   local() sources only means a computer that already has the font installed uses
+   it, at no download cost, while everyone else falls straight through to Noto
+   Nastaliq Urdu, which is loaded from Google Fonts and is the face the app has
+   always used. The order is what matters: Jameel Noori first, Noto Nastaliq Urdu
+   as the working web fallback. */
+
+@font-face {
+  font-family: 'Jameel Noori Nastaleeq';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Jameel Noori Nastaleeq'),
+       local('Jameel Noori Nastaleeq Regular'),
+       local('JameelNooriNastaleeq');
+}
+
+/* Nastaliq stacks letters along a sloping baseline and drops the tails of one
+   line below the next, so it needs noticeably more vertical room than Latin
+   text. These two rules give it that room everywhere, which is what stops the
+   bottom of a line being clipped in print. */
+.urdu-text,
+.urdu-input,
+.cert-sheet-urdu,
+.report-sheet-urdu,
+.letterhead-urdu {
+  line-height: 2;
+  padding-bottom: 2px;
+}
+
+/* Inputs and table cells clip rather than grow, so they are opened up rather
+   than relying on line-height alone. */
+input.urdu-input,
+textarea.urdu-text,
+td.urdu-text {
+  line-height: 2.1;
+  padding-top: 6px;
+  padding-bottom: 6px;
+}
+
+/* A Nastaliq word is one long joined shape, so it must never be broken across
+   lines by the browser's default word wrapping. */
+.urdu-text,
+.urdu-input,
+.cert-sheet-urdu,
+.report-sheet-urdu,
+.letterhead-urdu {
+  word-break: keep-all;
+  overflow-wrap: normal;
+}

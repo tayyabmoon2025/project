@@ -1,0 +1,1 @@
+ALTER TABLE public.school_students ADD COLUMN IF NOT EXISTS full_name_urdu text;

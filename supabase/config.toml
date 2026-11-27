@@ -1,0 +1,5 @@
+project_id = "schooldesk"
+
+[functions.school-assistant]
+verify_jwt = false
+entrypoint = "./functions/school-assistant/index.ts"

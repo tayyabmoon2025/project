@@ -1,0 +1,378 @@
+/* --- Message & Notice Templates, and the Send Notice flow -------------------
+   Two screens share these rules: the template library in Settings, and the
+   "Send Student Notice" modal that every module opens. Keeping them in one file
+   means the modal, the cards and the printed slip always agree. */
+
+/* --- Settings: the template library --------------------------------------- */
+.template-settings { display: flex; flex-direction: column; gap: 17px; }
+
+.template-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.template-toolbar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.template-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #f6f9fa;
+  border: 1px solid #e7eef1;
+  border-radius: 10px;
+  padding: 9px 12px;
+  color: #93a5af;
+  min-width: 260px;
+}
+
+.template-search input {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #405565;
+  font-size: 12px;
+  width: 100%;
+}
+
+.template-count { color: #8598a4; font-size: 11px; font-weight: 700; }
+
+/* The cards are laid out one per row so the English and Urdu boxes can both be
+   full width. */
+.template-card-grid { display: grid; grid-template-columns: 1fr; gap: 17px; }
+
+.template-card { padding: 22px; }
+.template-card.inactive { opacity: .68; }
+
+.template-card-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+.template-language-grid { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 18px; }
+
+.template-language-grid label > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #607783;
+  font-size: 11px;
+  font-weight: 700;
+  margin-bottom: 7px;
+}
+
+.template-language-grid label > span small { color: #9aabb4; font-weight: 400; }
+
+.template-language-grid textarea {
+  display: block;
+  width: 100%;
+  resize: vertical;
+  min-height: 128px;
+  border: 1px solid #dfe9ed;
+  border-radius: 10px;
+  outline: none;
+  padding: 12px;
+  color: #425d6c;
+  background: #fcfefe;
+  font: 12.5px/1.75 'DM Sans', sans-serif;
+}
+
+.template-language-grid textarea:focus { border-color: #71bfd4; box-shadow: 0 0 0 3px #dff4f8; }
+
+/* The Urdu box: right-to-left, Nastaliq, and never broken mid-word, so a
+   placeholder like {{student_name}} stays on one line. */
+.template-language-grid textarea.urdu-box {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+  font-size: 17px;
+  line-height: 2.15;
+  padding: 14px 12px;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.template-card-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+}
+
+.template-card-foot .template-updated { margin: 0; }
+
+.template-badge.fee { background: #e6f6ee; color: #2f7d5b; }
+.template-badge.reminder { background: #fff3cf; color: #a2762a; }
+.template-badge.warning { background: #ffebe5; color: #c05f50; }
+.template-badge.attendance { background: #e6f2fb; color: #2f6f96; }
+.template-badge.notice { background: #eef1f4; color: #56697a; }
+.template-badge.general { background: #eef1f4; color: #56697a; }
+.template-badge.homework { background: #f0ecfb; color: #63509b; }
+.template-badge.exam { background: #fdeee3; color: #a96a2c; }
+
+/* --- The template editor modal -------------------------------------------- */
+.template-modal { width: min(760px, 100%); }
+
+.template-modal .control-field.full { margin-top: 14px; }
+
+.template-modal textarea.urdu-box {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+  font-size: 17px;
+  line-height: 2.15;
+  min-height: 150px;
+  padding: 14px 12px;
+  word-break: keep-all;
+  overflow-wrap: normal;
+}
+
+.template-modal-actions { display: flex; justify-content: flex-end; gap: 9px; margin-top: 18px; }
+
+/* --- Send Student Notice -------------------------------------------------- */
+.send-notice-modal { width: min(820px, 100%); }
+
+.send-notice-heading { margin: 6px 0 3px; color: #2e4759; font: 800 21px 'Plus Jakarta Sans'; }
+.send-notice-sub { color: #8598a4; font-size: 11.5px; }
+
+.send-notice-error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 11px 13px;
+  border-radius: 10px;
+  background: #fdeceb;
+  color: #b8433d;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.send-notice-controls { display: flex; align-items: end; gap: 14px; flex-wrap: wrap; margin-top: 16px; }
+.send-notice-title { margin-top: 14px; }
+
+.send-notice-bodies { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 14px; }
+
+.send-notice-bodies textarea {
+  border: 1px solid #dfe9ed;
+  border-radius: 10px;
+  padding: 12px;
+  color: #405a6b;
+  background: #fcfefe;
+  outline: none;
+  font: 12.5px/1.75 'DM Sans', sans-serif;
+  resize: vertical;
+}
+
+.send-notice-bodies textarea:focus { border-color: #71bfd4; box-shadow: 0 0 0 3px #dff4f8; }
+
+.send-notice-bodies textarea.urdu-input {
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+  font-size: 17px;
+  line-height: 2.15;
+  text-align: right;
+  padding: 14px 12px;
+}
+
+.send-notice-placeholders {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+  padding: 11px 13px;
+  border: 1px dashed #b8dbe3;
+  background: #f5fbfc;
+  color: #6b8e99;
+  border-radius: 10px;
+  font-size: 11px;
+}
+
+.send-notice-placeholders code { color: #3484a0; background: #e3f4f7; border-radius: 4px; padding: 2px 5px; font-size: 10px; }
+.send-notice-placeholders .fee-link { margin-left: auto; display: inline-flex; align-items: center; gap: 5px; }
+
+.send-notice-preview {
+  margin-top: 14px;
+  border: 1px solid #e6ecee;
+  border-left: 3px solid #3da4c5;
+  border-radius: 12px;
+  background: #fffdf8;
+  padding: 18px 20px;
+}
+
+.send-notice-preview p { margin: 8px 0 0; color: #45596a; font-size: 12.5px; line-height: 1.75; white-space: pre-wrap; }
+.send-notice-preview .notice-slip-urdu { font-size: 16px; color: #33475a; }
+
+.send-notice-contact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0 0;
+  color: #4a7a63;
+  font-size: 11.5px;
+}
+
+.send-notice-contact.warn { color: #a2703a; }
+
+.send-notice-actions {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.send-notice-actions .primary-button { width: 100%; }
+.send-notice-actions .primary-button.wa { background: #1f9d63; box-shadow: 0 5px 12px #1f9d6330; }
+.send-notice-actions .primary-button.wa:hover { background: #1a8755; }
+.send-notice-actions .primary-button.portal { background: #2f6f96; box-shadow: 0 5px 12px #2f6f9630; }
+.send-notice-actions .primary-button.portal:hover { background: #295e80; }
+.send-notice-actions .primary-button:disabled { opacity: .55; cursor: not-allowed; }
+
+.send-notice-history { margin-top: 18px; border-top: 1px solid #edf2f4; padding-top: 14px; }
+
+.history-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 0;
+  background: none;
+  color: #2f88a3;
+  font-size: 11.5px;
+  font-weight: 700;
+  padding: 4px 0;
+}
+
+.send-notice-history-list { list-style: none; margin: 12px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; max-height: 230px; overflow-y: auto; }
+
+.send-notice-history-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid #eef2f4;
+  border-radius: 10px;
+  padding: 10px 13px;
+  background: #fcfdfe;
+}
+
+.send-notice-history-list strong { display: block; color: #33475a; font-size: 12.5px; }
+.send-notice-history-list small { color: #93a5af; font-size: 10.5px; }
+
+/* --- The printed notice slip --------------------------------------------- */
+/* Half an A4 sheet: 148mm tall inside the 8mm page margin. */
+.notice-slip {
+  display: flex;
+  flex-direction: column;
+  min-height: 138mm;
+  padding: 2mm 0 0;
+  color: #16232d;
+  font-family: 'DM Sans', 'Plus Jakarta Sans', sans-serif;
+}
+
+.notice-slip-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 9px;
+  font-size: 10.5px;
+  color: #45596a;
+}
+
+.notice-slip-meta b { color: #33475a; letter-spacing: .4px; text-transform: uppercase; font-size: 9px; margin-right: 5px; }
+
+.notice-slip-student {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px 16px;
+  margin-top: 10px;
+  border: 1px solid #d8e3e9;
+  border-radius: 8px;
+  padding: 10px 13px;
+  background: #fafcfd;
+}
+
+.notice-slip-student div { display: flex; flex-direction: column; gap: 2px; }
+.notice-slip-student b { font-size: 8.5px; letter-spacing: .6px; text-transform: uppercase; color: #5a6b76; }
+.notice-slip-student span { font-size: 11.5px; font-weight: 700; color: #16232d; }
+
+.notice-slip-title {
+  margin: 16px 0 0;
+  text-align: center;
+  font: 800 15px 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: .2px;
+  color: #16232d;
+}
+
+.notice-slip-body { flex: 1; margin-top: 12px; }
+
+.notice-slip-body p {
+  margin: 0 0 10px;
+  font-size: 12px;
+  line-height: 1.8;
+  white-space: pre-wrap;
+  color: #1d2f3b;
+}
+
+.notice-slip-urdu {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Jameel Noori Nastaleeq', 'Noto Nastaliq Urdu', serif;
+  font-size: 16px;
+  line-height: 2.15;
+}
+
+.notice-slip-placeholder { color: #8fa0aa; font-style: italic; }
+
+.notice-slip-foot {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 18px;
+}
+
+.notice-slip-note span { display: block; font-size: 8.5px; letter-spacing: .6px; text-transform: uppercase; color: #5a6b76; }
+.notice-slip-note strong { display: block; font-size: 11.5px; color: #16232d; margin-top: 2px; }
+.notice-slip-note small { display: block; font-size: 9.5px; color: #5a6b76; margin-top: 1px; }
+
+.notice-slip-sign { text-align: center; min-width: 150px; }
+.notice-slip-sign-line { display: block; border-top: 1px solid #16232d; margin-bottom: 4px; }
+.notice-slip-sign strong { display: block; font-size: 11.5px; color: #16232d; }
+.notice-slip-sign small { display: block; font-size: 9.5px; color: #5a6b76; margin-top: 1px; }
+
+.notice-slip-return {
+  margin: 14px 0 0;
+  border-top: 1px dashed #c3d0d8;
+  padding-top: 7px;
+  text-align: center;
+  font-size: 9.5px;
+  color: #5a6b76;
+}
+
+/* --- Narrow screens ------------------------------------------------------- */
+@media (max-width: 760px) {
+  .send-notice-actions { grid-template-columns: 1fr; }
+  .template-search { min-width: 0; width: 100%; }
+  .template-card-actions { width: 100%; }
+  .notice-slip-student { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .notice-slip-foot { flex-direction: column; align-items: stretch; gap: 16px; }
+  .notice-slip-sign { min-width: 0; }
+}
+
+/* --- Print ---------------------------------------------------------------- */
+@media print {
+  .print-sheet-root .notice-slip { min-height: 0; }
+  .notice-slip-body p,
+  .notice-slip-urdu,
+  .notice-slip-title { color: #000; }
+  .notice-slip-student { background: #fff; }
+  .notice-slip-sign-line { border-top-color: #000; }
+}
+
+/* Loaded after the older settings block, so the stacked, full-width layout wins. */
+.template-settings .template-card-grid { grid-template-columns: 1fr; }
+.template-settings .template-language-grid { grid-template-columns: 1fr; }
+
+.send-notice-actions .primary-button.print { background: #4a6b8a; box-shadow: 0 5px 12px #4a6b8a30; }
+.send-notice-actions .primary-button.print:hover { background: #3f5c77; }

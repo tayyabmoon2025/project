@@ -1,0 +1,147 @@
+/* --- Official letterhead ---------------------------------------------------
+   One header shared by every printed document in the school: student and staff
+   certificates, fee challans and vouchers, report cards, roll number slips and
+   salary slips.
+
+   Left   the school's own logo
+   Centre the school's name in English and Urdu, then the address, phone, email
+          and website, then the registration strip
+   Right  the registration authority's emblem, with a small caption
+
+   The three columns are laid out as a grid so the centre block stays centred on
+   the page whatever the two logos are shaped like, and the authority column is
+   only drawn when a logo has actually been uploaded. */
+
+.letterhead {
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #16232d;
+}
+
+.letterhead-logo {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+}
+
+/* An empty slot, so the centre block keeps its place when there is no logo. */
+.letterhead-slot {
+  width: 62px;
+  height: 62px;
+}
+
+.letterhead-copy {
+  min-width: 0;
+  text-align: center;
+}
+
+.letterhead-name {
+  margin: 0;
+  font: 800 22px 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -.4px;
+  color: #16232d;
+}
+
+.letterhead-urdu {
+  margin: 2px 0 0;
+  font-size: 17px;
+  color: #16232d;
+}
+
+.letterhead-contact {
+  margin: 3px 0 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: #45596a;
+}
+
+.letterhead-registration {
+  margin: 3px 0 0;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: .3px;
+  color: #33475a;
+}
+
+.letterhead-authority {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.letterhead-authority-logo {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
+}
+
+.letterhead-authority-caption {
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #5a6b76;
+}
+
+.letterhead-title {
+  margin: 5px 0 0;
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: #1d6b85;
+}
+
+/* --- Document reference slot -----------------------------------------------
+   A receipt number, a due date or a report period, printed past the authority logo
+   so the school's own details stay in the middle of the page. */
+.letterhead-has-badge { grid-template-columns: 62px minmax(0, 1fr) 62px auto; }
+.letterhead-has-badge.letterhead-compact { grid-template-columns: 50px minmax(0, 1fr) 50px auto; }
+
+.letterhead-badge {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  text-align: right;
+}
+
+/* --- Compact variant -------------------------------------------------------
+   Report cards, roll number slips and other dense sheets have far less vertical
+   room than a certificate, so the same header is drawn smaller. */
+.letterhead.letterhead-compact {
+  grid-template-columns: 52px 1fr 52px;
+  gap: 12px;
+  padding-bottom: 8px;
+}
+.letterhead.letterhead-compact .letterhead-logo,
+.letterhead.letterhead-compact .letterhead-slot,
+.letterhead.letterhead-compact .letterhead-authority-logo {
+  width: 50px;
+  height: 50px;
+}
+.letterhead.letterhead-compact .letterhead-name { font-size: 19px; }
+.letterhead.letterhead-compact .letterhead-urdu { font-size: 15px; }
+.letterhead.letterhead-compact .letterhead-contact { font-size: 10px; }
+.letterhead.letterhead-compact .letterhead-registration { font-size: 9.5px; }
+.letterhead.letterhead-compact .letterhead-title { font-size: 10px; letter-spacing: 1.1px; }
+.letterhead.letterhead-compact .letterhead-authority-caption { font-size: 7px; }
+
+/* --- Print ----------------------------------------------------------------
+   Colour is kept in the printout, and the header is never split across pages. */
+@media print {
+  .letterhead {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+  .letterhead-logo,
+  .letterhead-authority-logo {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}

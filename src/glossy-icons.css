@@ -1,0 +1,31 @@
+.nav-glossy-icon { display: inline-grid; place-items: center; width: 24px; height: 24px; flex-shrink: 0; transition: transform .25s cubic-bezier(.34,1.56,.64,1); animation: glossy-pop .5s cubic-bezier(.34,1.56,.64,1) backwards; }
+.sidebar nav .nav-button:nth-child(1) .nav-glossy-icon { animation-delay: .02s; } .sidebar nav .nav-button:nth-child(2) .nav-glossy-icon { animation-delay: .05s; } .sidebar nav .nav-button:nth-child(3) .nav-glossy-icon { animation-delay: .08s; } .sidebar nav .nav-button:nth-child(4) .nav-glossy-icon { animation-delay: .11s; } .sidebar nav .nav-button:nth-child(5) .nav-glossy-icon { animation-delay: .14s; } .sidebar nav .nav-button:nth-child(6) .nav-glossy-icon { animation-delay: .17s; } .sidebar nav .nav-button:nth-child(7) .nav-glossy-icon { animation-delay: .2s; } .sidebar nav .nav-button:nth-child(8) .nav-glossy-icon { animation-delay: .23s; } .sidebar nav .nav-button:nth-child(9) .nav-glossy-icon { animation-delay: .26s; } .sidebar nav .nav-button:nth-child(10) .nav-glossy-icon { animation-delay: .29s; } .sidebar nav .nav-button:nth-child(11) .nav-glossy-icon { animation-delay: .32s; } .sidebar nav .nav-button:nth-child(12) .nav-glossy-icon { animation-delay: .35s; } .sidebar nav .nav-button:nth-child(13) .nav-glossy-icon { animation-delay: .38s; } .sidebar nav .nav-button:nth-child(14) .nav-glossy-icon { animation-delay: .41s; } .sidebar nav .nav-button:nth-child(15) .nav-glossy-icon { animation-delay: .44s; } .sidebar nav .nav-button:nth-child(16) .nav-glossy-icon { animation-delay: .47s; } .sidebar nav .nav-button:nth-child(17) .nav-glossy-icon { animation-delay: .5s; } .sidebar nav .nav-button:nth-child(18) .nav-glossy-icon { animation-delay: .53s; } .sidebar nav .nav-button:nth-child(19) .nav-glossy-icon { animation-delay: .56s; } .sidebar nav .nav-button:nth-child(20) .nav-glossy-icon { animation-delay: .59s; } .sidebar nav .nav-button:nth-child(21) .nav-glossy-icon { animation-delay: .62s; } .sidebar nav .nav-button:nth-child(22) .nav-glossy-icon { animation-delay: .65s; } .sidebar nav .nav-button:nth-child(23) .nav-glossy-icon { animation-delay: .68s; }
+.nav-button:hover .nav-glossy-icon { transform: scale(1.14) rotate(-4deg); }
+.nav-button:hover .nav-glossy-icon svg { filter: drop-shadow(0 5px 8px rgba(23, 58, 83, 0.35)); transition: filter .25s ease; }
+.nav-button.active .nav-glossy-icon { transform: scale(1.05); }
+.nav-button:active .nav-glossy-icon { transform: scale(0.94); transition-duration: .1s; }
+@keyframes glossy-pop { from { opacity: 0; transform: translateY(8px) scale(0.4); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+.att-tab { transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+.att-tab:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(64, 118, 152, 0.14); }
+.att-tab-glossy { display: inline-grid; place-items: center; width: 24px; height: 24px; flex-shrink: 0; transition: transform .25s cubic-bezier(.34,1.56,.64,1); animation: glossy-pop .5s cubic-bezier(.34,1.56,.64,1) backwards; }
+.att-tabs .att-tab:nth-child(1) .att-tab-glossy { animation-delay: .02s; } .att-tabs .att-tab:nth-child(2) .att-tab-glossy { animation-delay: .07s; } .att-tabs .att-tab:nth-child(3) .att-tab-glossy { animation-delay: .12s; } .att-tabs .att-tab:nth-child(4) .att-tab-glossy { animation-delay: .17s; } .att-tabs .att-tab:nth-child(5) .att-tab-glossy { animation-delay: .22s; } .att-tabs .att-tab:nth-child(6) .att-tab-glossy { animation-delay: .27s; } .att-tabs .att-tab:nth-child(7) .att-tab-glossy { animation-delay: .32s; } .att-tabs .att-tab:nth-child(8) .att-tab-glossy { animation-delay: .37s; }
+.att-tab:hover .att-tab-glossy { transform: scale(1.16) rotate(4deg); }
+.att-tab:active .att-tab-glossy { transform: scale(0.94); transition-duration: .1s; }
+.att-tabs .att-tab { animation: glossy-card-in .4s ease backwards; }
+.att-tabs .att-tab:nth-child(1) { animation-delay: 0s; } .att-tabs .att-tab:nth-child(2) { animation-delay: .05s; } .att-tabs .att-tab:nth-child(3) { animation-delay: .1s; } .att-tabs .att-tab:nth-child(4) { animation-delay: .15s; } .att-tabs .att-tab:nth-child(5) { animation-delay: .2s; } .att-tabs .att-tab:nth-child(6) { animation-delay: .25s; } .att-tabs .att-tab:nth-child(7) { animation-delay: .3s; } .att-tabs .att-tab:nth-child(8) { animation-delay: .35s; }
+@keyframes glossy-card-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-glossy-icon, .att-tab-glossy, .att-tabs .att-tab, .stat-glossy-icon, .module-glossy-icon { animation: none !important; transition: none !important; }
+}
+.utility-bar-btn.icon-theme-on { color: #2c6ea3; }
+.icon-button.theme-toggle.icon-theme-on { color: #2c6ea3; }
+
+.stat-glossy-icon { display: inline-grid; place-items: center; width: 30px; height: 30px; transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
+.stat-card:hover .stat-glossy-icon { transform: scale(1.12) rotate(-3deg); }
+.module-glossy-icon { display: inline-grid; place-items: center; width: 42px; height: 42px; transition: transform .25s cubic-bezier(.34,1.56,.64,1); }
+.module-card:hover .module-glossy-icon { transform: scale(1.12) rotate(-4deg); }
+.stat-glossy-icon, .module-glossy-icon { animation: glossy-pop .5s cubic-bezier(.34,1.56,.64,1) backwards; }
+.stats-row .stat-card:nth-child(1) .stat-glossy-icon { animation-delay: .05s; } .stats-row .stat-card:nth-child(2) .stat-glossy-icon { animation-delay: .12s; } .stats-row .stat-card:nth-child(3) .stat-glossy-icon { animation-delay: .19s; } .stats-row .stat-card:nth-child(4) .stat-glossy-icon { animation-delay: .26s; }
+.module-grid .module-card:nth-child(1) .module-glossy-icon { animation-delay: .05s; } .module-grid .module-card:nth-child(2) .module-glossy-icon { animation-delay: .12s; } .module-grid .module-card:nth-child(3) .module-glossy-icon { animation-delay: .19s; } .module-grid .module-card:nth-child(4) .module-glossy-icon { animation-delay: .26s; } .module-grid .module-card:nth-child(5) .module-glossy-icon { animation-delay: .33s; } .module-grid .module-card:nth-child(6) .module-glossy-icon { animation-delay: .4s; }

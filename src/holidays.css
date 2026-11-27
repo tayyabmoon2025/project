@@ -1,0 +1,337 @@
+
+/* ==========================================================================
+   Holiday-tomorrow alert and the Holidays screen
+   ========================================================================== */
+
+.holiday-banner {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+  padding: 18px 20px 30px;
+  border: 1px solid #f3d9a8;
+  border-left: 5px solid #d99b26;
+  border-radius: 14px;
+  background: linear-gradient(100deg, #fff8e9, #fffdf6 62%);
+  box-shadow: 0 10px 26px #b7821c1f;
+  animation: holiday-banner-in .32s ease;
+}
+
+@keyframes holiday-banner-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.holiday-banner-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  border-radius: 13px;
+  background: #fdf0d5;
+  border: 1px solid #f0dcb0;
+  color: #b07d14;
+}
+
+.holiday-banner-copy { flex: 1 1 320px; min-width: 0; }
+
+.holiday-banner-eyebrow {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #a4740f;
+}
+
+.holiday-banner-copy h3 {
+  margin: 4px 0 5px;
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #7a5306;
+}
+
+.holiday-banner-copy p {
+  margin: 0;
+  font-size: 12.5px;
+  line-height: 1.55;
+  color: #6b5320;
+}
+
+.holiday-banner-copy p strong { color: #5d4405; }
+
+.holiday-banner-copy small {
+  display: block;
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: #8a7333;
+}
+
+.holiday-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.holiday-banner-share {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 9px 15px;
+  border-radius: 10px;
+  background: #1f9d63;
+  border: 1px solid #1b8b57;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: .2s ease;
+}
+
+.holiday-banner-share:hover { background: #178a55; transform: translateY(-1px); box-shadow: 0 8px 18px #1f9d6333; }
+
+.holiday-banner-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4c7a5d;
+}
+
+.holiday-banner-status.failed { color: #b4553f; }
+
+.holiday-banner-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #ecd9ae;
+  border-radius: 9px;
+  background: #fffdf7;
+  color: #a5822f;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.holiday-banner-close:hover { background: #f7e9c9; color: #7a5306; }
+
+.holiday-banner-note {
+  position: absolute;
+  left: 20px;
+  bottom: 10px;
+  font-size: 10.5px;
+  color: #9a8348;
+}
+
+.holiday-head-copy {
+  margin: 6px 0 0;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #475569;
+  max-width: 62ch;
+}
+
+.holiday-head-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* The search field: the icon sits inside the input, and the input keeps its own
+   left padding so the text never runs under the icon. */
+.control-field .control-label { font-size: 11px; font-weight: 700; color: #526b7b; }
+
+.control-input-icon { position: relative; display: block; }
+
+.control-input-icon svg {
+  position: absolute;
+  top: 50%;
+  left: 11px;
+  transform: translateY(-50%);
+  color: #93a5af;
+  pointer-events: none;
+}
+
+.control-input-icon input {
+  width: 100%;
+  border: 1px solid #dfe9ed;
+  border-radius: 9px;
+  padding: 9px 10px;
+  color: #405a6b;
+  background: #fcfefe;
+  outline: none;
+  font: 11px/1.6 'DM Sans', sans-serif;
+  font-weight: 400;
+}
+
+.control-input-icon input:focus { border-color: #71bfd4; box-shadow: 0 0 0 3px #dff4f8; }
+
+.control-input-icon input.pl-10 { padding-left: 34px; }
+
+.holiday-search { flex: 1 1 260px; min-width: 200px; }
+
+/* Add / edit form */
+.holiday-editor {
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  border: 1px solid #d9e8ee;
+  border-radius: 12px;
+  background: #f8fcfd;
+}
+
+.holiday-editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.holiday-editor-head strong { font-size: 13px; color: #3d5667; }
+
+.holiday-editor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 14px;
+}
+
+.holiday-editor-grid .control-field.full { grid-column: 1 / -1; }
+
+.holiday-editor-hint {
+  margin: 12px 0 0;
+  font-size: 11px;
+  line-height: 1.6;
+  color: #64748b;
+}
+
+.holiday-editor-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 14px; }
+
+/* One-tap gazetted holiday seeding */
+.holiday-seed-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 16px 18px;
+  border: 1px solid #cfe6dc;
+  border-radius: 12px;
+  background: #f6fdf9;
+}
+
+.holiday-seed-panel strong { display: block; font-size: 13px; color: #2f5a45; }
+.holiday-seed-panel p { margin: 5px 0 10px; font-size: 11.5px; line-height: 1.6; color: #4a6b5b; max-width: 66ch; }
+
+.holiday-seed-list { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.holiday-seed-list span {
+  padding: 4px 9px;
+  border-radius: 20px;
+  background: #e6f6ee;
+  border: 1px solid #cbe9da;
+  color: #33684d;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.holiday-seed-actions { display: flex; gap: 8px; }
+
+.holiday-row-actions { display: flex; gap: 6px; }
+
+.holiday-row-actions .row-action-btn.danger { color: #c46255; border-color: #f2d3cc; }
+.holiday-row-actions .row-action-btn.danger:hover { background: #fdeeea; }
+
+tr.holiday-past td { color: #94a3b8; }
+
+.holiday-suggestions {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid #edf2f4;
+}
+
+.holiday-suggestions-head strong { font-size: 12.5px; color: #3d5667; }
+.holiday-suggestions-head p { margin: 4px 0 10px; font-size: 11px; line-height: 1.6; color: #64748b; }
+
+.holiday-suggestion-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.holiday-suggestion {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px dashed #cbdde5;
+  border-radius: 9px;
+  background: #fbfdfe;
+  color: #4b6a7b;
+  font-size: 11.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: .18s ease;
+}
+
+.holiday-suggestion:hover:not(:disabled) { border-color: #8fc7d8; background: #eef8fa; color: #2f7b93; }
+
+/* Dark theme */
+[data-theme="dark"] .holiday-banner {
+  background: linear-gradient(100deg, #2b2413, #1e293b 62%);
+  border-color: #4a3d1c;
+  border-left-color: #d99b26;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .holiday-banner-icon { background: #3a3117; border-color: #56471d; color: #f2dc9b; }
+[data-theme="dark"] .holiday-banner-eyebrow { color: #e6c675; }
+[data-theme="dark"] .holiday-banner-copy h3 { color: #f7e9bd; }
+[data-theme="dark"] .holiday-banner-copy p { color: #d9cfae; }
+[data-theme="dark"] .holiday-banner-copy p strong { color: #fbf3d8; }
+[data-theme="dark"] .holiday-banner-copy small,
+[data-theme="dark"] .holiday-banner-note { color: #b6a878; }
+[data-theme="dark"] .holiday-banner-close { background: #1e293b; border-color: #4a3d1c; color: #e6c675; }
+[data-theme="dark"] .holiday-banner-close:hover { background: #3a3117; }
+[data-theme="dark"] .holiday-banner-status { color: #86efac; }
+[data-theme="dark"] .holiday-banner-status.failed { color: #fca5a5; }
+
+[data-theme="dark"] .holiday-head-copy { color: #94a3b8; }
+[data-theme="dark"] .holiday-editor { background: #16213a; border-color: #334155; }
+[data-theme="dark"] .holiday-editor-head strong { color: #e2e8f0; }
+[data-theme="dark"] .holiday-editor-hint { color: #94a3b8; }
+[data-theme="dark"] .holiday-seed-panel { background: #14251d; border-color: #2b4436; }
+[data-theme="dark"] .holiday-seed-panel strong { color: #a7f3d0; }
+[data-theme="dark"] .holiday-seed-panel p { color: #94a3b8; }
+[data-theme="dark"] .holiday-seed-list span { background: #1c3327; border-color: #2b4436; color: #a7f3d0; }
+[data-theme="dark"] .holiday-suggestions { border-color: #334155; }
+[data-theme="dark"] .holiday-suggestions-head strong { color: #e2e8f0; }
+[data-theme="dark"] .holiday-suggestions-head p { color: #94a3b8; }
+[data-theme="dark"] .holiday-suggestion { background: #16213a; border-color: #334155; color: #cbd5e1; }
+[data-theme="dark"] .holiday-suggestion:hover:not(:disabled) { background: #263951; border-color: #38bdf8; color: #7dd3fc; }
+[data-theme="dark"] .control-input-icon input { background: #0f172a; border-color: #334155; color: #e2e8f0; }
+[data-theme="dark"] .control-input-icon input:focus { border-color: #38bdf8; box-shadow: 0 0 0 3px rgba(56, 189, 248, .18); }
+[data-theme="dark"] .control-input-icon svg { color: #64748b; }
+[data-theme="dark"] .control-field .control-label { color: #94a3b8; }
+[data-theme="dark"] tr.holiday-past td { color: #64748b; }
+
+.att-tab.active .att-tab-label small { color: #475569; }
+[data-theme="dark"] .att-tab.active .att-tab-label small { color: #94a3b8; }
+
+@media (max-width: 900px) {
+  .holiday-banner { padding: 16px 16px 30px; }
+  .holiday-banner-actions { width: 100%; justify-content: flex-start; }
+  .holiday-banner-note { position: static; display: block; width: 100%; margin-top: 4px; }
+}
+
+@media (max-width: 640px) {
+  .holiday-head-actions { width: 100%; }
+  .holiday-head-actions .primary-button,
+  .holiday-head-actions .secondary-button { flex: 1 1 auto; justify-content: center; }
+  .holiday-editor-actions { flex-direction: column-reverse; }
+  .holiday-editor-actions button { width: 100%; justify-content: center; }
+}
+
+.datesheet-clash td { background: #fff6f4; }
+.datesheet-clash-flag { display: block; margin-top: 3px; font-size: 9.5px; font-weight: 700; color: #c46255; }
+[data-theme="dark"] .datesheet-clash td { background: #2a1a1a; }
+[data-theme="dark"] .datesheet-clash-flag { color: #fca5a5; }
